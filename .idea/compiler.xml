@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="templateBot" target="18" />
+      <module name="templateBot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
