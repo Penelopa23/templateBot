@@ -5,10 +5,16 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.webapp.WebAppInfo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class InlineKeyBoardBot {
+/**
+ *
+ * Класс создания клавиатура
+ *
+ */
 
+public class InlineKeyBoardBot {
 
     public InlineKeyboardMarkup webAppKeyboard() { //создание клавиатуры с webapp кнопкой
         return getButtons(); //возвращаем клавиатуру
@@ -19,12 +25,8 @@ public class InlineKeyBoardBot {
      */
     public InlineKeyboardMarkup getButtons() {
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
-
         rowList.add(getButton("Test Page", getWebAppInfo("https://penelopa23.github.io/testsite/")));
-
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        inlineKeyboardMarkup.setKeyboard(rowList);
-        return inlineKeyboardMarkup;
+        return new InlineKeyboardMarkup(rowList);
     }
 
     /**
@@ -34,7 +36,6 @@ public class InlineKeyBoardBot {
         InlineKeyboardButton button = new InlineKeyboardButton();
         button.setWebApp(webAppInfo);
         button.setText(buttonName);
-        //button.setCallbackData(dataButton);
 
         List<InlineKeyboardButton> keyboardButtonsRow = new ArrayList<>();
         keyboardButtonsRow.add(button);

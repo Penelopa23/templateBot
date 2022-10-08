@@ -29,13 +29,15 @@ public class TelegramBotConfig extends SpringWebhookBot {
     String payToken;
 
     MessageHandler messageHandler;
+    PayHandler payHandler;
 
     public static Map<Long, Integer> settings = new HashMap<>();
     public static Map<Long, Integer> count = new HashMap<>();
 
-    public TelegramBotConfig(SetWebhook setWebhook, MessageHandler messageHandler) {
+    public TelegramBotConfig(SetWebhook setWebhook, MessageHandler messageHandler, PayHandler payHandler) {
         super(setWebhook);
         this.messageHandler = messageHandler;
+        this.payHandler = payHandler;
     }
 
     @Override
@@ -45,15 +47,18 @@ public class TelegramBotConfig extends SpringWebhookBot {
 
     public BotApiMethod<?> handleUpdate(Update update) {
         if (update.hasPreCheckoutQuery()) {
-            return new PayHandler().answerPreCheckoutQuery(update);
+            return payHandler.answerPreCheckoutQuery(update);
+        }
+        if(update.getShippingQuery() != null) {
+            return payHandler.shippingQuery(update);
         }
         if(update.getMessage().hasSuccessfulPayment()) {
-            return new PayHandler().successMesage(update);
+            return payHandler.successMesage(update);
         }
         if (!update.getMessage().hasViaBot()) {
             return messageHandler.startMessage(update);
         } else if (update.getMessage().hasViaBot()) {
-            return new PayHandler().invoiceForBurger(update, payToken);
+            return payHandler.invoiceForBurger(update, payToken);
         } else {
             try {
                 return new SendMessage(update.getMessage().getChatId().toString(), "It's something else, please " +
