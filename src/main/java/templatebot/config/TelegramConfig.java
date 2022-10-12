@@ -16,6 +16,4 @@ public class TelegramConfig {
     String userName;
     @Value("${telegrambot.botToken}")
     String botToken;
-    @Value("${telegrambot.payToken}")
-    String payToken;
 }

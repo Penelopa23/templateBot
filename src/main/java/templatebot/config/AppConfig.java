@@ -19,12 +19,11 @@ public class AppConfig {
     }
 
     @Bean
-    public TelegramBotConfig springWebhookBot(SetWebhook setWebhook, MessageHandler messageHandler, PayHandler payHandler) {
-        TelegramBotConfig bot = new TelegramBotConfig(setWebhook, messageHandler, payHandler);
+    public TelegramBotConfig springWebhookBot(SetWebhook setWebhook) {
+        TelegramBotConfig bot = new TelegramBotConfig(setWebhook);
         bot.setBotToken(botConfig.getBotToken());
         bot.setBotUsername(botConfig.getUserName());
         bot.setBotPath(botConfig.getWebHookPath());
-        bot.setPayToken(botConfig.getPayToken());
 
         return bot;
     }
