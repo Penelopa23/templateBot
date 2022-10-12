@@ -19,7 +19,7 @@ public class UpdateRouter {
     String payToken;
 
     public BotApiMethod<?> route(Update update) {
-        if(update.hasMessage()) { //Ответы на запросы содержащие сообщения
+        if(update.hasMessage()) { //Ответы на запросы содержащие сообщение
             if (!update.getMessage().hasViaBot() && !update.getMessage().hasSuccessfulPayment()) {
                 return messageHandler.startMessage(update);
             } else if (update.getMessage().hasViaBot()) {

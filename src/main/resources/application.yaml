@@ -5,8 +5,7 @@ telegrambot:
   userName: "@TemplateSimpleBot"
   botToken: "5558689984:AAHktTbnkTXsBAdPX59CuBeqYC1gkmUC2pE"
   payToken: "284685063:TEST:NmI3ZTdkMjhhZGFk"
-  webHookPath: "https://ff43-185-115-4-54.eu.ngrok.io"
-#  webHookPath: "https://templatebotw.herokuapp.com/"
+  webHookPath: "https://templatebotw.herokuapp.com/"
 
 subscriptions:
   processPeriod: "1800000"
