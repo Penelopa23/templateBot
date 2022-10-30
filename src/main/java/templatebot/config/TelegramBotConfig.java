@@ -7,17 +7,10 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.starter.SpringWebhookBot;
-import templatebot.handlers.MessageHandler;
-import templatebot.handlers.PayHandler;
 import templatebot.utils.UpdateRouter;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 @Getter
@@ -40,13 +33,10 @@ public class TelegramBotConfig extends SpringWebhookBot {
 
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
-        return handleUpdate(update);
+            return handleUpdate(update);
     }
 
     public BotApiMethod<?> handleUpdate(Update update) {
        return updateRouter.route(update);
     }
-
-
-
 }
