@@ -105,7 +105,7 @@ public class PayHandler {
         ArrayList<LabeledPrice> result = new ArrayList<>();
         for (int i = 0; i < products.length; i++) {
             String[] temp = products[i].split("-");
-            int cost = (int) Float.parseFloat(temp[1]) * 100;
+            int cost = (int) (Float.parseFloat(temp[1]) * 100);
             result.add(new LabeledPrice(temp[0], cost));
         }
         return result;
